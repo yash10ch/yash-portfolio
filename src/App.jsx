@@ -183,24 +183,27 @@ export default function App() {
               <motion.div variants={fadeInUp}>
                 <p className="text-[#9f9fa9] text-base leading-6 max-w-lg">
                   Building end-to-end fintech web applications with
+                  <span className="font-medium text-neutral-50 mx-1">Angular</span>,
                   <span className="font-medium text-neutral-50 mx-1">React</span>,
                   <span className="font-medium text-neutral-50 mx-1">Next.js</span>,
-                  <span className="font-medium text-neutral-50 mx-1">Angular</span>,
-                  <span className="font-medium text-neutral-50 mx-1">NestJS</span>,
-                  <span className="font-medium text-neutral-50 mx-1">.NET Core</span>.
+                  and
+                  <span className="font-medium text-neutral-50 mx-1">NestJS</span>.
                   Sole engineer on 3 live production products serving 500+
                   enterprise clients.
                 </p>
               </motion.div>
               <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-4">
-                <Button className="bg-[#155dfc] hover:bg-[#155dfc]/90 text-[#1c398e] gap-2 transition-all hover:scale-105">
+                <Button
+                  className="bg-[#155dfc] hover:bg-[#155dfc]/90 text-[#1c398e] gap-2 transition-all hover:scale-105"
+                  onClick={(e) => scrollToSection(e, 'projects')}
+                >
                   <Briefcase className="size-4" />
                   View Projects
                 </Button>
                 <Button
                   variant="outline"
                   className="border-white/10 gap-2 hover:bg-white/5 transition-all hover:scale-105"
-                  onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+                  onClick={(e) => scrollToSection(e, 'contact')}
                 >
                   <Mail className="size-4" />
                   Get in Touch
@@ -263,7 +266,7 @@ export default function App() {
                     <span className="text-[#9f9fa9]">: [</span>
                   </div>
                   <div className="pl-8" style={{ color: "oklch(0.645 0.246 16.439)" }}>
-                    'React', 'Next.js 14', 'Angular 17',
+                    'Angular 17', 'React', 'Next.js 14',
                   </div>
                   <div className="pl-8" style={{ color: "oklch(0.645 0.246 16.439)" }}>
                     'NestJS', '.NET Core', 'PostgreSQL'
@@ -292,9 +295,9 @@ export default function App() {
           >
             {[
               { label: "Experience", value: "2+", unit: "yr", icon: Calendar },
-              { label: "Live Products", value: "3", unit: "apps", icon: Rocket },
+              { label: "Live Products", value: "2", unit: "+", icon: Rocket },
               { label: "Enterprise Clients", value: "500", unit: "+", icon: Users },
-              { label: "Perf Boost", value: "15", unit: "%", icon: Zap },
+              { label: "Problem Solving", value: "DSA", unit: "", icon: Zap },
             ].map((stat, idx) => (
               <motion.div key={idx} variants={fadeInUp}>
                 <Card className="bg-zinc-900 border-white/10 p-4 md:p-6 hover:bg-zinc-800 transition-colors duration-300">
@@ -328,9 +331,9 @@ export default function App() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                { title: "Frontend", subtitle: "// UI / UX layer", icon: Layout, color: "#155dfc", tags: ["React", "Next.js 14", "Angular 17", "TypeScript", "Tailwind CSS", "Redux", "RxJS"] },
-                { title: "Backend", subtitle: "// API / Business logic", icon: Server, color: "oklch(0.696 0.17 162.48)", bg: "oklch(0.696 0.17 162.48 / 0.15)", tags: ["NestJS", ".NET Core", "Node.js", "Express", "REST APIs", "GraphQL", "JWT Auth"] },
-                { title: "Database & DevOps", subtitle: "// Data & deployment", icon: Database, color: "oklch(0.627 0.265 303.9)", bg: "oklch(0.627 0.265 303.9 / 0.15)", tags: ["PostgreSQL", "MongoDB", "Redis", "Docker", "AWS", "CI/CD", "Git"] },
+                { title: "Frontend", subtitle: "// UI / UX layer", icon: Layout, color: "#155dfc", tags: ["Angular 17", "React.js", "Next.js 14", "TypeScript", "Redux Toolkit", "Bootstrap 5"] },
+                { title: "Backend", subtitle: "// API / Business logic", icon: Server, color: "oklch(0.696 0.17 162.48)", bg: "oklch(0.696 0.17 162.48 / 0.15)", tags: ["NestJS", "Node.js", ".NET Core", "REST APIs", "JWT Auth", "RBAC"] },
+                { title: "Database & DevOps", subtitle: "// Data & deployment", icon: Database, color: "oklch(0.627 0.265 303.9)", bg: "oklch(0.627 0.265 303.9 / 0.15)", tags: ["PostgreSQL", "SQL Server", "MySQL", "GitLab CI/CD", "Docker", "Jest"] },
               ].map((skillBlock, idx) => (
                 <motion.div key={idx} variants={fadeInUp} whileHover={{ y: -5 }}>
                   <Card className="bg-zinc-900 border-white/10 h-full p-6 hover:shadow-xl transition-all duration-300">
@@ -372,16 +375,16 @@ export default function App() {
                 <h2 className="font-bold text-3xl md:text-4xl tracking-tight">Featured Work</h2>
                 <p className="text-[#9f9fa9]">Production fintech platforms shipped end-to-end.</p>
               </div>
-              <Button variant="outline" className="border-white/10 gap-2 hover:bg-white/5 transition-all">
-                View All <ExternalLink className="size-4" />
+              <Button onClick={() => window.open('https://github.com/yashgenie', '_blank')} variant="outline" className="border-white/10 gap-2 hover:bg-white/5 transition-all">
+                View GitHub <ExternalLink className="size-4" />
               </Button>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                { title: "FinTrade Platform", sub: "enterprise · trading", desc: "Real-time trading dashboard handling 500+ enterprise clients with sub-100ms latency.", tags: ["Next.js", "NestJS", "PostgreSQL"], img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600", badgeColor: "bg-[#155dfc] text-[#1c398e]" },
-                { title: "PayFlow Suite", sub: "payments · b2b", desc: "Cross-border payment platform with KYC automation and 15% performance boost.", tags: ["Angular 17", ".NET Core", "Redis"], img: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600", badgeColor: "bg-[oklch(0.696_0.17_162.48)] text-[oklch(0.141_0.005_285.823)]" },
-                { title: "RiskLens Analytics", sub: "analytics · risk", desc: "Risk analytics dashboard with predictive modeling and real-time reporting.", tags: ["React", "NestJS", "MongoDB"], img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600", badgeColor: "bg-[oklch(0.627_0.265_303.9)] text-red-950" },
+                { title: "Backoffice Financial Dashboard", sub: "enterprise · fintech", desc: "Multi-module fintech dashboard managing KYC status, onboarding data, and client accounts for 500+ users. Built RBAC-aware route guards and real-time data refresh.", tags: ["Next.js 14", "NestJS", "PostgreSQL"], img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600", badgeColor: "bg-[#155dfc] text-[#1c398e]" },
+                { title: "Client Onboarding Platform", sub: "workflows · b2b", desc: "Multi-step post-CRM onboarding workflow with dynamic form rendering, interceptor-based JWT auth, custom validators, and conditional logic.", tags: ["Angular 17", "Bootstrap 5", "REST APIs"], img: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600", badgeColor: "bg-[oklch(0.696_0.17_162.48)] text-[oklch(0.141_0.005_285.823)]" },
+                { title: "Order Management System (OMS)", sub: "analytics · trading", desc: "Full order lifecycle tracking—create, view, filter, and sort orders with real-time status updates and robust pagination logic.", tags: ["Angular 17", "Next.js", "NestJS"], img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600", badgeColor: "bg-[oklch(0.627_0.265_303.9)] text-red-950" },
               ].map((proj, idx) => (
                 <motion.div key={idx} variants={fadeInUp} whileHover={{ y: -5 }}>
                   <Card className="bg-zinc-900 border-white/10 p-0 overflow-hidden group h-full flex flex-col">
@@ -402,8 +405,7 @@ export default function App() {
                         ))}
                       </div>
                       <div className="border-t border-white/10 flex pt-4 mt-2 items-center gap-4">
-                        <a href="#" className="text-[#9f9fa9] hover:text-white text-sm flex items-center gap-1 transition-colors"><Code2 className="size-4" /> Code</a>
-                        <a href="#" className="text-[#9f9fa9] hover:text-white text-sm flex items-center gap-1 transition-colors"><ExternalLink className="size-4" /> Live</a>
+                        <a href="https://github.com/yashgenie" target="_blank" rel="noreferrer" className="text-[#9f9fa9] hover:text-white text-sm flex items-center gap-1 transition-colors"><Code2 className="size-4" /> Source</a>
                       </div>
                     </div>
                   </Card>
@@ -431,19 +433,18 @@ export default function App() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {[
                 {
-                  role: "Full-Stack Developer", company: "Fintech Solutions Pvt Ltd", type: "Current", date: "Jun 2023 — Present", loc: "Mumbai, India", color: "oklch(0.546 0.245 262.881)", badge: "bg-[#155dfc]/15 text-[#155dfc]", bullets: [
-                    "Sole engineer on 3 live production fintech products serving 500+ enterprise clients.",
-                    "Boosted dashboard performance by 15% via React rendering & SQL query optimization.",
-                    "Architected NestJS micro-services with JWT auth and Redis caching layer.",
-                    "Led migration from Angular 14 to Angular 17 with zero downtime."
+                  role: "Software Engineer — Full-Stack", company: "Genie Technology", type: "Current", date: "Aug 2024 — Present", loc: "Mumbai, India", color: "oklch(0.546 0.245 262.881)", badge: "bg-[#155dfc]/15 text-[#155dfc]", bullets: [
+                    "Owned full-stack feature delivery across 3 live production products serving 500+ fintech enterprise clients.",
+                    "Architected SPA with Next.js 14 + Redux Toolkit, reducing page load times by 15% via lazy loading and centralized data fetch.",
+                    "Worked with .NET Core architecture (Controllers, DTOs, Domain) and integrated NestJS REST APIs backed by PostgreSQL.",
+                    "Managed GitLab CI/CD pipelines, handled JWT auth, RBAC, and debugged production issues."
                   ]
                 },
                 {
-                  role: "Software Engineer Intern", company: "TechBridge Innovations", type: "Past", date: "Jan 2023 — May 2023", loc: "Remote", color: "oklch(0.627 0.265 303.9)", badge: "bg-zinc-800 text-neutral-50", bullets: [
-                    "Built reusable React component library used across 4 internal products.",
-                    "Implemented REST endpoints with Node.js & Express for client portal.",
-                    "Wrote 100+ unit tests improving code coverage from 40% to 85%.",
-                    "Collaborated in agile sprints with cross-functional design team."
+                  role: "Frontend Developer Intern", company: "Signal ATM", type: "Past", date: "Feb 2024 — Jul 2024", loc: "Mumbai, India", color: "oklch(0.627 0.265 303.9)", badge: "bg-zinc-800 text-neutral-50", bullets: [
+                    "Developed UI for core ATM management web products supporting 300+ daily financial transactions.",
+                    "Designed component-based architecture improving code reusability by 30%.",
+                    "Validated API response structures and delivered responsive UI features independently within agile sprints."
                   ]
                 }
               ].map((exp, idx) => (
